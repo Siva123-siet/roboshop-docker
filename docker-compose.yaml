@@ -59,7 +59,7 @@ services:
       - cart
       - user
   frontend:
-    image: siva316/payment:v1
+    image: siva316/frontend:v1
     container_name: frontend
     ports:
     - "80:80"
