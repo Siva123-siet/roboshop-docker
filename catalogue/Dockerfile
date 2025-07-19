@@ -11,7 +11,6 @@ ENV MONGO="true" \
 WORKDIR /opt/server
 USER roboshop
 COPY --from=builder /opt/server /opt/server
-RUN chown -R roboshop:roboshop /opt/server
 CMD ["node","server.js"]
 
 
