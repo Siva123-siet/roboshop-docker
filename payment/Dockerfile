@@ -1,25 +1,16 @@
 FROM python:3.9.23-alpine3.22 AS builder
 EXPOSE 8080
-# RUN apk add --no-cache \
-#     build-base \
-#     linux-headers \
-#     python3-dev \
-#     libffi-dev \
-#     openssl-dev
-    # musl-dev \
-    # gcc \
-    # g++ \
-    # make
-RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
-WORKDIR /opt/server
-RUN chown -R roboshop:roboshop /opt/server
 RUN apk add --no-cache \
     build-base \
     linux-headers \
     python3-dev \
     libffi-dev \
     openssl-dev
-USER roboshop
+    # musl-dev \
+    # gcc \
+    # g++ \
+    # make
+WORKDIR /opt/server
 COPY requirements.txt .
 COPY *.py .
 COPY payment.ini .
