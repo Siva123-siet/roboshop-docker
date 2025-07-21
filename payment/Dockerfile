@@ -1,11 +1,11 @@
 FROM python:3.9.23-alpine3.22 AS builder
 EXPOSE 8080
-RUN apk add --no-cache \
-    build-base \
-    linux-headers \
-    python3-dev \
-    libffi-dev \
-    openssl-dev
+# RUN apk add --no-cache \
+#     build-base \
+#     linux-headers \
+#     python3-dev \
+#     libffi-dev \
+#     openssl-dev
     # musl-dev \
     # gcc \
     # g++ \
@@ -13,6 +13,12 @@ RUN apk add --no-cache \
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 WORKDIR /opt/server
 RUN chown -R roboshop:roboshop /opt/server
+RUN apk add --no-cache \
+    build-base \
+    linux-headers \
+    python3-dev \
+    libffi-dev \
+    openssl-dev
 USER roboshop
 COPY requirements.txt .
 COPY *.py .
