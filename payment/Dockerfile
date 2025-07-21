@@ -1,7 +1,5 @@
 FROM python:3.9.23-alpine3.22 AS builder
 EXPOSE 8080
-RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
-RUN chown -R roboshop:roboshop
 RUN apk add --no-cache \
     build-base \
     linux-headers \
@@ -12,6 +10,8 @@ RUN apk add --no-cache \
     # gcc \
     # g++ \
     # make
+RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
+RUN chown -R roboshop:roboshop
 WORKDIR /opt/server
 USER roboshop
 COPY requirements.txt .
