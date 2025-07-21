@@ -5,11 +5,11 @@ RUN apk add --no-cache \
     linux-headers \
     python3-dev \
     libffi-dev \
-    openssl-dev \
-    musl-dev \
-    gcc \
-    g++ \
-    make
+    openssl-dev
+    # musl-dev \
+    # gcc \
+    # g++ \
+    # make
 WORKDIR /opt/server
 COPY requirements.txt .
 COPY *.py .
