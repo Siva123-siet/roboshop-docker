@@ -11,8 +11,8 @@ RUN apk add --no-cache \
     # g++ \
     # make
 RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
-RUN chown -R roboshop:roboshop
 WORKDIR /opt/server
+RUN chown -R roboshop:roboshop
 USER roboshop
 COPY requirements.txt .
 COPY *.py .
