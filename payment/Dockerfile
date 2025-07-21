@@ -1,4 +1,5 @@
 FROM python:3.9.23-alpine3.22 AS builder
+EXPOSE 8080
 RUN apk add --no-cache \
     build-base \
     linux-headers \
@@ -14,12 +15,6 @@ COPY requirements.txt .
 COPY *.py .
 COPY payment.ini .
 RUN pip3 install -r requirements.txt
-
-FROM python:3.9.23-alpine3.22
-EXPOSE 8080
-WORKDIR /opt/server
-COPY --from=builder /opt/server /opt/server
-RUN pip3 install uwsgi
 CMD ["uwsgi","--ini","payment.ini"]
 
 
