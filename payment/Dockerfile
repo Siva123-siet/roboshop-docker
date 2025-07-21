@@ -10,11 +10,13 @@ RUN apk add --no-cache \
     # gcc \
     # g++ \
     # make
+RUN addgroup -S roboshop && adduser -S roboshop -G roboshop
 WORKDIR /opt/server
 COPY requirements.txt .
 COPY *.py .
 COPY payment.ini .
 RUN pip3 install -r requirements.txt
+USER roboshop
 CMD ["uwsgi","--ini","payment.ini"]
 
 
