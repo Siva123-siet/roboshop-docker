@@ -1,4 +1,6 @@
 FROM nginx:1.29.0-alpine
+# Running Nginx official image as non root
+# we got this from : https://forums.docker.com/t/running-nginx-official-image-as-non-root/135759
 RUN rm /etc/nginx/nginx.conf /etc/nginx/conf.d/default.conf
 RUN mkdir -p /var/cache/nginx/client_temp && \
         mkdir -p /var/cache/nginx/proxy_temp && \
